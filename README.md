@@ -18,9 +18,9 @@ You’ll take to DuckDB like a duck to water, rapidly solving almost any relatio
 ## About the authors
 
 **Mark Needham** is a blogger, and video creator at [@LearnDataWithMark](https://www.youtube.com/channel/UCKEk670ECmteGBehmDjVSSg), where his series on DuckDB offers viewers hands-on insights into practical database applications.
-Find him as [@mesirii](https://chaos.social/@mesirii) on various channels. 
 
-**Michael Hunger** works on the open source [Neo4j graph database](https://neo4j.com) filling many roles, where leads the product innovation and developer product strategy. 
+**Michael Hunger** works on the open source [Neo4j graph database](https://neo4j.com) filling many roles, where leads the product innovation and developer product strategy.
+Find him as [@mesirii](https://chaos.social/@mesirii) on various channels.
 
 **Michael Simons** is a Java Champion, author, and Staff Software Engineer at Neo4j and has been working professionally as a [developer](https://github.com/michael-simons) for more than 20 years, always close to a database.
 Find him as [@rotnroll666](https://mastodon.social/@rotnroll666) on various channels.
