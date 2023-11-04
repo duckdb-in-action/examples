@@ -1,0 +1,24 @@
+engine_version: 1
+sources:
+  chess:
+    is_dirty: false
+    last_commit_sha: 18466620a405086790b44159b50e5b6d59805cc7
+    last_commit_timestamp: '2023-10-31T17:46:05+01:00'
+    files:
+      chess/__init__.py:
+        commit_sha: 18466620a405086790b44159b50e5b6d59805cc7
+        git_sha: 3eb4bf55b74395bca8217f45c8cdd0851e1a4ddb
+        sha3_256: 6c7b794809fabe3e8f7ab7d5bf731454b12e8bf5302adfebcbb336d235a9b11b
+      chess/README.md:
+        commit_sha: 18466620a405086790b44159b50e5b6d59805cc7
+        git_sha: c24134613e0f01c9fb520bf6e2a9f195a7ba1ba2
+        sha3_256: 2c0f855a4aa9fd20c01336ae19377379ea4e8585d5750574f9a3cb4b268a5532
+      chess/settings.py:
+        commit_sha: 18466620a405086790b44159b50e5b6d59805cc7
+        git_sha: 3b729dd553ea4a28f74421a5f39ad8ef012e50bf
+        sha3_256: 4eac90e97013efcd76027dc35faea960507894a0e586e4b09798e722226a07f4
+      chess/helpers.py:
+        commit_sha: 18466620a405086790b44159b50e5b6d59805cc7
+        git_sha: 6a65462ec9c2fb0f15c8c6968786e2ce20eeed00
+        sha3_256: 0c9590f209858051d49cb728d98ebcafd5d9a9b724b6e8339869f9a3b541bdb6
+    dlt_version_constraint: <0.4.0,>=0.3.5
