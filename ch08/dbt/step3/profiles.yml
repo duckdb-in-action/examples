@@ -1,0 +1,7 @@
+dbt_transformations:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: '/tmp/atp.db' # <.>
+      schema: 'main'

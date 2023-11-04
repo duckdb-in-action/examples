@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: matches
+    description: "ATP tennis matches schema"
+    columns:
+      - name: tourney_id
+        description: "The ID of the tournament."
+        tests:
+          - not_null
+      - name: winner_id
+        description: "The ID of the winning player."
+        tests:
+          - not_null
+      - name: loser_id
+        description: "The ID of the losing player."
+        tests:
+          - not_null
+      - name: surface
+        description: "The surface of the court."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Grass', 'Hard', 'Clay']

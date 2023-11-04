@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: matches
+    description: "ATP tennis matches schema"
+    columns:
+      - name: tourney_id
+        description: "The ID of the tournament."
+        tests:
+          - not_null
+      - name: winner_id
+        description: "The ID of the winning player."
+        tests:
+          - not_null
+      - name: loser_id
+        description: "The ID of the winning player."
+        tests:
+          - not_null
+      - name: surface
+        description: "The surface of the court."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Grass', 'Hard', 'Clay', 'Carpet'] # <.>
+      - name: tourney_date
+        description: "The date when the tournament started"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: date
+          - dbt_expectations.expect_column_min_to_be_between:
+              min_value: "CAST('1967-12-01' AS DATE)"
+              max_value: "CAST('2023-12-31' AS DATE)"

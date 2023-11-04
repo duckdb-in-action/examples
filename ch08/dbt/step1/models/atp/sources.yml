@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: github
+    meta:
+      external_location: 'https://raw.githubusercontent.com/JeffSackmann/tennis_atp/master/atp_matches_2023.csv'
+    tables:
+      - name: matches_file

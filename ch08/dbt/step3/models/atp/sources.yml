@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: github
+    meta:
+      external_location: >
+        (FROM read_csv_auto(
+          list_transform( 
+            range(1968, 2023),
+            y -> 'https://raw.githubusercontent.com/JeffSackmann/tennis_atp/master/atp_matches_' || y || '.csv'
+          ),
+          types={'winner_seed': 'VARCHAR', 'loser_seed': 'VARCHAR'}
+        ))
+      formatter: oldstyle
+    tables:
+      - name: matches_file
