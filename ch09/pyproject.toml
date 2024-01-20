@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "data-app"
+version = "0.1.0"
+description = ""
+authors = ["Mark Needham <m.h.needham@gmail.com>"]
+readme = "README.md"
+packages = [{include = "data_app"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+duckdb = "^0.9.1"
+streamlit = "^1.27.2"
+streamlit-searchbox = "^0.1.5"
+dagster-duckdb = "^0.21.1"
+dagster-webserver = "^1.5.1"
+urllib3 = "1.26.15"
+requests-toolbelt = "0.10.1"
+dagit = "^1.5.1"
+python-dotenv = "^1.0.0"
+plotly = "^5.17.0"
+apache-superset = "^3.0.0"
+duckdb-engine = "^0.9.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.dagster]
+module_name = "atp"
