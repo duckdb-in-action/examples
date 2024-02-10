@@ -1,0 +1,4 @@
+*.jar
+*.db
+.idea
+*.iml
