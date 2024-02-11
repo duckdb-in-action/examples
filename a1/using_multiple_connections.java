@@ -4,10 +4,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Stream;
 
 import org.duckdb.DuckDBConnection;
 
@@ -17,7 +17,7 @@ class using_multiple_connections {
 	private static final String DUCKDB_URL
 		= "jdbc:duckdb:readings.db"; // <.>
 
-	public static void main(String... a) throws SQLException {
+	public static void main(String... a) throws Exception {
 
 		var createTableStatement = """
 			CREATE TABLE IF NOT EXISTS readings (
@@ -27,6 +27,7 @@ class using_multiple_connections {
 			)
 			"""; // <.>
 
+		var executor = Executors.newWorkStealingPool();
 		try (
 			var con = DriverManager
 				.getConnection(DUCKDB_URL); // <.>
@@ -39,13 +40,14 @@ class using_multiple_connections {
 			ID_GENERATOR.compareAndSet(0, result.getInt(1));
 			result.close();
 
-			var futures = Stream.generate(() ->
-					CompletableFuture // <.>
-						.runAsync(() -> insertNewReading(con)))
-				.limit(20)
-				.toArray(CompletableFuture[]::new);
-			CompletableFuture.allOf(futures).join(); // <.>
+			for (int i = 0; i < 20; ++i) { // <.>
+				executor.submit(() -> insertNewReading(con));
+			}
+			executor.shutdown();
+			executor // <.>
+				.awaitTermination(5, TimeUnit.MINUTES);
 		}
+
 	}
 	// end::main[]
 	// tag::method[]
