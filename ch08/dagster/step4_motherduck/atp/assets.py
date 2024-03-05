@@ -18,8 +18,9 @@ def atp_matches_dataset(duckdb: DuckDBResource) -> None:
             cast(strptime(tourney_date, '%Y%m%d') AS date) as tourney_date 
         )
         FROM read_csv_auto($1, types={
-          'winner_seed': 'VARCHAR', 
-          'loser_seed': 'VARCHAR'
+          'winner_seed': 'STRING', 
+          'loser_seed': 'STRING',
+          'tourney_date': 'STRING'
         })
         """, [csv_files])
 
@@ -43,7 +44,9 @@ def atp_players_dataset(duckdb: DuckDBResource) -> None:
                     CAST(strptime(dob, '%Y%m%d') AS date) -- <.>
             END AS dob
         )
-        FROM read_csv_auto($1);
+        FROM read_csv_auto($1, types = {
+            'dob': 'STRING'
+        });
         """, [csv_file])
 
 @asset(deps=[atp_players_dataset])
