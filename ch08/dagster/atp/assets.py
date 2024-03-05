@@ -62,6 +62,7 @@ def atp_players_name_dataset(duckdb: DuckDBResource) -> None:
         """, [])
 ### Step 2
 
+### Step 3
 @asset
 def atp_rounds_dataset(duckdb: DuckDBResource) -> None:
     rounds_df = pd.DataFrame({
@@ -80,7 +81,7 @@ def atp_rounds_dataset(duckdb: DuckDBResource) -> None:
         SELECT * FROM rounds_df
         """)
 
-### Step 3
+
 @asset
 def atp_levels_dataset(duckdb: DuckDBResource) -> None:
     levels_df = pd.DataFrame({
