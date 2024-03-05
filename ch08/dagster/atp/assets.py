@@ -3,6 +3,7 @@ from dagster import asset
 
 import pandas as pd
 
+### Step 1
 @asset
 def atp_matches_dataset(duckdb: DuckDBResource) -> None:
     base = "https://raw.githubusercontent.com/JeffSackmann/tennis_atp/master"
@@ -23,7 +24,9 @@ def atp_matches_dataset(duckdb: DuckDBResource) -> None:
           'tourney_date': 'STRING'
         })
         """, [csv_files])
+### Step 1
 
+### Step 2
 @asset
 def atp_players_dataset(duckdb: DuckDBResource) -> None:
     base = "https://raw.githubusercontent.com/JeffSackmann/tennis_atp/master"
@@ -57,6 +60,7 @@ def atp_players_name_dataset(duckdb: DuckDBResource) -> None:
         UPDATE players
         SET name_full = name_first || ' ' || name_last
         """, [])
+### Step 2
 
 @asset
 def atp_rounds_dataset(duckdb: DuckDBResource) -> None:
@@ -76,6 +80,7 @@ def atp_rounds_dataset(duckdb: DuckDBResource) -> None:
         SELECT * FROM rounds_df
         """)
 
+### Step 3
 @asset
 def atp_levels_dataset(duckdb: DuckDBResource) -> None:
     levels_df = pd.DataFrame({
@@ -96,3 +101,4 @@ def atp_levels_dataset(duckdb: DuckDBResource) -> None:
         CREATE TABLE IF NOT EXISTS levels AS
         SELECT * FROM levels_df
         """)
+### Step 3
