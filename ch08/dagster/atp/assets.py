@@ -16,7 +16,7 @@ def atp_matches_dataset(duckdb: DuckDBResource) -> None:
         conn.execute(""" 
         CREATE TABLE IF NOT EXISTS matches AS
         SELECT * REPLACE(
-            cast(strptime(tourney_date, '%Y%m%d') AS date) as tourney_date 
+            cast(strptime(tourney_date::VARCHAR, '%Y%m%d') AS date) as tourney_date 
         )
         FROM read_csv_auto($1, types={
           'winner_seed': 'STRING', 

@@ -13,7 +13,7 @@ WITH noWinLoss AS (
 )
 
 SELECT * REPLACE (
-    cast(strptime(tourney_date, '%Y%m%d') AS date) as tourney_date
+    cast(strptime(tourney_date::VARCHAR, '%Y%m%d') AS date) as tourney_date
 )
 FROM noWinLoss
 WHERE surface IS NOT NULL

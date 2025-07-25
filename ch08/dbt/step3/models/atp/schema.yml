@@ -13,7 +13,7 @@ models:
         tests:
           - not_null
       - name: loser_id
-        description: "The ID of the winning player."
+        description: "The ID of the losing player."
         tests:
           - not_null
       - name: surface
